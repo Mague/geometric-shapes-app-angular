@@ -9,19 +9,43 @@ import {Figure} from '../figure';
 })
 export class FigureFormComponent implements OnInit {
 	figure: Figure;
+	types:string[]=['Circle','Square','Triangle'];
 	constructor(private route:ActivatedRoute,private router:Router,private figureService:FigureService) {
-		this.figure=new Figure(
-			0,0,0,0,0,''
-		);
+		this.figure={
+			id: null,
+			width: null,
+			height: null,
+			base: null,
+			radius: null,
+			type: null
+		};
 	}
 
 	ngOnInit(): void {
 	}
 	onSubmit() {
-		this.figureService.save(this.figure).subscribe(result => this.gotoFigureList());
+		let data={}
+		if(this.figure.type=='Circle'){
+			data={
+				radius:this.figure.radius,
+				type:this.figure.type
+			}
+		}else if(this.figure.type=="Square"){
+			data={
+				width:this.figure.width,
+				type:this.figure.type
+			}
+		}else if(this.figure.type=="Triangle"){
+			data={
+				base:this.figure.base,
+				height:this.figure.height,
+				type:'triangle'
+			}
+		}
+		this.figureService.save(data).subscribe(result => this.gotoFigureList());
 	}
 
   gotoFigureList() {
-    this.router.navigate(['/figure']);
+    this.router.navigate(['/figures']);
   }
 }

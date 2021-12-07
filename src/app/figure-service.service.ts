@@ -16,7 +16,7 @@ export class FigureService {
 		return this.http.get<Figure[]>(this.figuresUrl+"all");
 	}
 
-	public save(figure: Figure){
+	public save(figure: any){
 		return this.http.post<Figure>(this.figuresUrl+"add",figure);
 	}
 }

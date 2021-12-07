@@ -1,12 +1,12 @@
-export class Figure {
-	id: number;
-  	width: number;
-    height: number;
-    base: number;
-    radius: number;
-    type: string;
+export interface Figure {
+	id: number | null;
+  	width: number | null;
+    height: number | null;
+    base: number | null;
+    radius: number | null;
+    type: string | null;
 
-	constructor(
+	/* constructor(
 		id: number,width: number,height: number,base: number,radius: number,type: string
 	) {
 		this.id=id;
@@ -15,5 +15,5 @@ export class Figure {
 		this.base=base;
 		this.radius=radius;
 		this.type=type;
-	}
+	} */
 }

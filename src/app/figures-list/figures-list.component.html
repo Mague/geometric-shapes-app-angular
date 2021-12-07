@@ -7,6 +7,9 @@
                         #
                     </th>
                     <th scope="col">
+                        width
+                    </th>
+                    <th scope="col">
                         height
                     </th>
                     <th scope="col">
@@ -23,6 +26,7 @@
             <tbody>
                 <tr *ngFor="let figure of figures">
                     <td>{{ figure.id }}</td>
+                    <td>{{ figure.width }}</td>
                     <td>{{ figure.height }}</td>
                     <td>{{ figure.base }}</td>
                     <td>{{ figure.radius }}</td>
