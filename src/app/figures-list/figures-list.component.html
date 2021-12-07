@@ -1,0 +1,34 @@
+<div class="card my-5">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        #
+                    </th>
+                    <th scope="col">
+                        height
+                    </th>
+                    <th scope="col">
+                        base
+                    </th>
+                    <th scope="col">
+                        radius
+                    </th>
+                    <th scope="col">
+                        type
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let figure of figures">
+                    <td>{{ figure.id }}</td>
+                    <td>{{ figure.height }}</td>
+                    <td>{{ figure.base }}</td>
+                    <td>{{ figure.radius }}</td>
+                    <td>{{ figure.type }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
