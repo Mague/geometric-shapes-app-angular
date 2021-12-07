@@ -3,6 +3,7 @@ import {HttpClient,HttpHeaders} from '@angular/common/http';
 import {Figure} from './figure';
 import { Observable } from 'rxjs';
 import { FigureDetail } from './figureDetail';
+import data from '../config.json';
 @Injectable({
 	providedIn: 'root'
 })
@@ -10,7 +11,7 @@ export class FigureService {
 	private figuresUrl: string;
 
   	constructor(private http:HttpClient) {
-		this.figuresUrl = 'http://localhost:8080/geometric/';
+		this.figuresUrl = data.host+'geometric/';
 	}
 
 	public findAll(): Observable<Figure[]> {
