@@ -25,7 +25,11 @@
             </thead>
             <tbody>
                 <tr *ngFor="let figure of figures">
-                    <td>{{ figure.id }}</td>
+                    <td>
+                        <a [routerLink]="['/figure', figure.id]">
+							{{ figure.id }}
+						</a>
+                    </td>
                     <td>{{ figure.width }}</td>
                     <td>{{ figure.height }}</td>
                     <td>{{ figure.base }}</td>

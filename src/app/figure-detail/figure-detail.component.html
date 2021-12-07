@@ -1,0 +1,25 @@
+<div *ngIf="figure" class="card my-5">
+    <div class="card-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>Id: {{figure.id}}</p>
+                <p>Width: {{ figure.width }}</p>
+                <p>Height: {{ figure.height }}</p>
+                <p>Base: {{ figure.base }}</p>
+                <p>Radius: {{ figure.radius }}</p>
+                <p>Type: {{figure.type }}</p>
+                <p>Surface: {{figure.surface }}</p>
+                <p>Diameter: {{figure.diameter }}</p>
+                <div class="center">
+                    <a [routerLink]="['/figure/update', figure.id]" class="btn btn-success">
+						Edit
+					</a>
+                    <button type="button" class="btn btn-danger" (click)="deleteFigure()">Remove</button>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

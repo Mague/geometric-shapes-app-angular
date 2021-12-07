@@ -6,19 +6,19 @@
 					<option [value]="type" *ngFor="let type of types">{{type}}</option>
 				</select>
             </div>
-            <div class="form-group" *ngIf="figure.type=='Square'">
+            <div class="form-group" *ngIf="figure.type=='square'">
                 <label for="width">Width</label>
                 <input type="text" [(ngModel)]="figure.width" class="form-control" id="width" name="width" placeholder="Enter width" required #width="ngModel">
             </div>
-            <div class="form-group" *ngIf="figure.type=='Triangle'">
+            <div class="form-group" *ngIf="figure.type=='triangle'">
                 <label for="height">Height</label>
                 <input type="text" [(ngModel)]="figure.height" class="form-control" id="height" name="height" placeholder="Enter height" required #height="ngModel">
             </div>
-            <div class="form-group" *ngIf="figure.type=='Triangle'">
+            <div class="form-group" *ngIf="figure.type=='triangle'">
                 <label for="base">Base</label>
                 <input type="text" [(ngModel)]="figure.base" class="form-control" id="base" name="base" placeholder="Enter base" required #base="ngModel">
             </div>
-            <div class="form-group" *ngIf="figure.type=='Circle'">
+            <div class="form-group" *ngIf="figure.type=='circle'">
                 <label for="radius">Radius</label>
                 <input type="text" [(ngModel)]="figure.radius" class="form-control" id="radius" name="radius" placeholder="Enter radius" required #base="ngModel">
             </div>

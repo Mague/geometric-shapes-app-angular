@@ -9,7 +9,10 @@ import {Figure} from '../figure';
 })
 export class FigureFormComponent implements OnInit {
 	figure: Figure;
-	types:string[]=['Circle','Square','Triangle'];
+	types:string[]=['circle','square','triangle'];
+	id!: number;
+	private sub: any;
+	isUpdate:boolean=false;
 	constructor(private route:ActivatedRoute,private router:Router,private figureService:FigureService) {
 		this.figure={
 			id: null,
@@ -22,30 +25,72 @@ export class FigureFormComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.sub = this.route.params.subscribe(params => {
+			this.id = +params['id'];
+			if(this.id){
+				this.isUpdate=true;
+			}
+		});
+
+		this.figureService.findById(this.id).subscribe(data=>{
+			this.figure=data;
+		})
 	}
 	onSubmit() {
 		let data={}
-		if(this.figure.type=='Circle'){
-			data={
-				radius:this.figure.radius,
-				type:this.figure.type
+		if(this.figure.type=='circle'){
+			if(this.isUpdate){
+				data={
+					id:this.id,
+					radius:this.figure.radius,
+					type:this.figure.type
+				}
+			}else{
+				data={
+					radius:this.figure.radius,
+					type:this.figure.type
+				}
 			}
-		}else if(this.figure.type=="Square"){
-			data={
-				width:this.figure.width,
-				type:this.figure.type
+		}else if(this.figure.type=="square"){
+			if(this.isUpdate){
+				data={
+					id:this.id,
+					width:this.figure.width,
+					type:this.figure.type
+				}
+			}else{
+				data={
+					width:this.figure.width,
+					type:this.figure.type
+				}
 			}
-		}else if(this.figure.type=="Triangle"){
-			data={
-				base:this.figure.base,
-				height:this.figure.height,
-				type:'triangle'
+		}else if(this.figure.type=="triangle"){
+			if(this.isUpdate){
+				data={
+					id:this.id,
+					base:this.figure.base,
+					height:this.figure.height,
+					type:'triangle'
+				}
+			}else{
+				data={
+					base:this.figure.base,
+					height:this.figure.height,
+					type:'triangle'
+				}
 			}
 		}
-		this.figureService.save(data).subscribe(result => this.gotoFigureList());
+		if(this.isUpdate){
+			this.figureService.update(data).subscribe(result => this.gotoFigureList());
+		}else{
+			this.figureService.save(data).subscribe(result => this.gotoFigureList());
+		}
 	}
 
-  gotoFigureList() {
-    this.router.navigate(['/figures']);
-  }
+	gotoFigureList() {
+		this.router.navigate(['/figures']);
+	}
+  	ngOnDestroy() {
+		this.sub.unsubscribe();
+	}
 }

@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { FiguresListComponent } from './figures-list/figures-list.component';
 import { FigureFormComponent } from './figure-form/figure-form.component';
 import { FigureService } from './figure-service.service';
+import { FigureDetailComponent } from './figure-detail/figure-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FiguresListComponent,
-    FigureFormComponent
+    FigureFormComponent,
+    FigureDetailComponent
   ],
   imports: [
     BrowserModule,
